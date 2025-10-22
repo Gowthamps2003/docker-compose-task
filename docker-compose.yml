@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web:
+    image: nginx:latest
+    container_name: web_server
+    ports:
+      - "8082:80"
+    volumes:
+      - ./web:/usr/share/nginx/html
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:latest
+    container_name: redis_server
+    ports:
+      - "6379:6379"
